@@ -24,6 +24,12 @@ assertType('int', (new Foo())->when(true, function (Foo $foo): int {
     return rand();
 }));
 
+/** @var string|null */
+$var = 'foo'
+(new Foo())->when($var, function (Foo $foo, string $var) {
+    assertType('string', $var);
+});
+
 assertType('ConditionableStubs\Foo', (new Foo())->unless(true, function (Foo $foo) {
     // do nothing
 }));
